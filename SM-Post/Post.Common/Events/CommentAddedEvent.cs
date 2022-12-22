@@ -16,7 +16,7 @@ namespace Post.Common.Events
 
         public string Username { get; set; }
 
-        public string GuidCommentId { get; set; }
+        public Guid CommentId { get; set; }
 
         public DateTime CommentDate { get; set; }
     }
