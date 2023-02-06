@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using CQRS.Core.Infrastructure;
 using Microsoft.AspNetCore.Mvc;
 using Post.Cmd.Api.Commands;
@@ -33,7 +29,8 @@ public class NewPostController : ControllerBase
             await _commandDispatcher.SendAsync(command);
 
             return StatusCode(StatusCodes.Status201Created, new NewPostResponse()
-            {
+            { 
+                Id = id,
                 Message = "New post creation request completed successfully!"
             });
         }
