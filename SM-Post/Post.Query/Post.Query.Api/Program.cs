@@ -18,14 +18,15 @@ builder.Services.AddSingleton<DatabaseContextFactory>(new DatabaseContextFactory
 // Create database and tables from code
 var dataContext = builder.Services.BuildServiceProvider().GetRequiredService<DatabaseContext>();
 dataContext.Database.EnsureCreated();
-
 builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<IEventHandler, Post.Query.Infrastructure.Handlers.EventHandler>();
-builder.Services.AddScoped<IEventConsumer, EventConsumer>();
 builder.Services.Configure<ConsumerConfig>(builder.Configuration.GetSection(nameof(ConsumerConfig)));
-builder.Services.AddHostedService<ConsumerHostedService>();
+builder.Services.AddScoped<IEventConsumer, EventConsumer>();
+
 builder.Services.AddControllers();
+builder.Services.AddHostedService<ConsumerHostedService>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
