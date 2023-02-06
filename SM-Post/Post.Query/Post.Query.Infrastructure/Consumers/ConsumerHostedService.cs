@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CQRS.Core.Consumers;
-using DnsClient.Internal;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
@@ -14,7 +14,7 @@ namespace Post.Query.Infrastructure.Consumers
         private readonly ILogger _logger;
         private readonly IServiceProvider _serviceProvider;
 
-        public ConsumerHostedService(ILogger logger, IServiceProvider serviceProvider)
+        public ConsumerHostedService(ILogger<ConsumerHostedService> logger, IServiceProvider serviceProvider)
         {
             _logger = logger;
             _serviceProvider = serviceProvider;
