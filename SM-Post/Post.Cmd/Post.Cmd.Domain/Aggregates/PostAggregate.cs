@@ -136,7 +136,7 @@ namespace Post.Cmd.Domain.Aggregates
             {
                 EditDate = DateTime.Now,
                 Comment = comment,
-                CommentId = Id,
+                CommentId = commentId,
                 Id = _id,
                 Username = username
             });
