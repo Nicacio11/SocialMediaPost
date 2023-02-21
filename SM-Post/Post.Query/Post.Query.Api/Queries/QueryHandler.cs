@@ -30,7 +30,7 @@ namespace Post.Query.Api.Queries
             return new List<PostEntity>(){ post };
         }
 
-        public async Task<List<PostEntity>> HandleAsync(FindPostsByAuthor query)
+        public async Task<List<PostEntity>> HandleAsync(FindPostsByAuthorQuery query)
         {
             _ = query ?? throw new ArgumentNullException(nameof(query));
             return await _postRepository.ListBytAuthorAsync(query.Author);
